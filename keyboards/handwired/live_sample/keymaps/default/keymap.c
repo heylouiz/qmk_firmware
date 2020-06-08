@@ -54,26 +54,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Default layer */
 [_DEFAULT] = {
-  {KC_1, KC_2, KC_3},
-  {KC_4, KC_5, MT(MOD_LSFT, KC_6)},
-  {KC_7, KC_8, TD(TD_9_ENTER)},
-  {LOWER, KC_SPACE, RAISE},
+  {    KC_1,      KC_2,       KC_3                 },
+  {    KC_4,      KC_5,       MT(MOD_LSFT, KC_6)   },
+  {    KC_7,      KC_8,       TD(TD_9_ENTER)       },
+  {    LOWER,     KC_SPACE,   RAISE},
 },
 
 /* Lower layer */
 [_LOWER] = {
-  {KC_A, KC_MS_U, KC_C},
-  {KC_MS_L, KC_MS_D, KC_MS_R},
-  {CONSAGRADOS, KC_I, KC_J},
-  {_______, KC_BSPACE, _______},
+  {    KC_A,        KC_MS_U,     KC_C      },
+  {    KC_MS_L,     KC_MS_D,     KC_MS_R   },
+  {    CONSAGRADOS, KC_I,        KC_J      },
+  {    _______,     KC_BSPACE,   _______   },
 },
 
 /* Raise layer */
 [_RAISE] = {
-  {RGB_TOG, RGB_MOD, RGB_RMOD},
-  {KC_D, KC_F, RESET},
-  {DM_REC1, DM_RSTP, DM_PLY1},
-  {_______, KC_BSPACE, _______},
+  {    RGB_TOG,     RGB_MOD,    RGB_RMOD   },
+  {    KC_D,        KC_F,       RESET      },
+  {    DM_REC1,     DM_RSTP,    DM_PLY1    },
+  {    _______,     KC_BSPACE,  _______    },
 },
 
 };
