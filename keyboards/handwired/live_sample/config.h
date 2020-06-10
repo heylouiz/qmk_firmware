@@ -32,24 +32,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RAW_USAGE_PAGE 0xFF60
 #define RAW_USAGE_ID 0x61
 
-/* key matrix size */
+/* O tamanho da matriz de teclas */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 3
 
-/* Keyboard pinout */
+/* Pinos utilizados pela Matriz */
 #define MATRIX_ROW_PINS { E6, B3, B1, B2 }
 #define MATRIX_COL_PINS { B4, B5, B6 }
 #define UNUSED_PINS
 
 // RGB configurations
-#define RGB_DI_PIN F4  // Pin used to control the RGB Strip
-#define RGBLED_NUM 50  // Number of leds in the led strip
-#define RGBLIGHT_ANIMATIONS  // Enable rgb animations
+#define RGB_DI_PIN F4  // Pino utilizado para controlar a fita RGB
+#define RGBLED_NUM 50  // Numero de leds à serem controlados
+#define RGBLIGHT_ANIMATIONS  // Habilita animações da fita de led
 
 // Tap dancing timeout
 #define TAPPING_TERM 200
 
-/* COL2ROW or ROW2COL */
+/* Direção do diodo na Matriz */
 #define DIODE_DIRECTION COL2ROW
 
 

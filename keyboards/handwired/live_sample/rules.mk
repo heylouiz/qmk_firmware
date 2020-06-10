@@ -8,10 +8,8 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 # I needed to change this to caterina in order make it work on the promicro
 BOOTLOADER = caterina
 
-# Build Options
-#   change to "no" to disable the options, or define them in the Makefile in
-#   the appropriate keymap folder that will get included automatically
-#
+# Configuração de funcionalidades do teclado
+# Coloque `yes` na frente da configuração para habilitar e `no` para desabilitar
 MOUSEKEY_ENABLE = yes       # Mouse keys(+4700)
 EXTRAKEY_ENABLE = yes       # Audio control and System control(+450)
 NKRO_ENABLE = yes            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work

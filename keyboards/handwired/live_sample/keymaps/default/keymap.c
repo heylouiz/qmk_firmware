@@ -19,19 +19,19 @@
 
 extern keymap_config_t keymap_config;
 
-// Layers
+// Camadas
 enum livesample_layers {
   _DEFAULT,
   _LOWER,
   _RAISE
 };
 
-// Custom keycode numbers
+// Código de botões personalizados
 enum livesample_keycodes {
   DEFAULT = SAFE_RANGE,
-  LOWER, // Keycode to enable the LOWER layer
-  RAISE, // Keycode to enable the RAISE layer
-  CONSAGRADOS // Keycode of a custom macro
+  LOWER, // Código para ativar a camada LOWER
+  RAISE, // Código para ativar a camada RAISE
+  CONSAGRADOS // Código de uma macro pré definida
 };
 
 #define LOWER MO(_LOWER)  // Define a momentary layer keycode
@@ -43,16 +43,16 @@ enum {
   TD_9_ENTER = 0
 };
 
-//Tap Dance Definitions
+// Tap Dance
 qk_tap_dance_action_t tap_dance_actions[] = {
-  //Tap once for number 9, twice for Enter
+  // Pressione a tecla uma vez para enviar 9, duas vezes para enviar ENTER
   [TD_9_ENTER] = ACTION_TAP_DANCE_DOUBLE(KC_9, KC_ENTER)
 // Other declarations would go here, separated by commas, if you have them
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Default layer */
+/* Camada padrão */
 [_DEFAULT] = {
   {    KC_1,      KC_2,       KC_3                 },
   {    KC_4,      KC_5,       MT(MOD_LSFT, KC_6)   },
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {    LOWER,     KC_SPACE,   RAISE},
 },
 
-/* Lower layer */
+/* Camada Lower */
 [_LOWER] = {
   {    KC_A,        KC_MS_U,     KC_C      },
   {    KC_MS_L,     KC_MS_D,     KC_MS_R   },
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {    _______,     KC_BSPACE,   _______   },
 },
 
-/* Raise layer */
+/* Camada Raise */
 [_RAISE] = {
   {    RGB_TOG,     RGB_MOD,    RGB_RMOD   },
   {    KC_D,        KC_F,       RESET      },
@@ -78,13 +78,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// This function is used to override a behavior of an existing key or to define a new one
-// Here we are sending an string when the keycode CONSAGRADOS is pressed
+// Função utilizada para sobreescrever o comportamento de um botão existente ou definir um novo.
+// Estamos usando essa função para enviar uma mensagem quando o botão definido como CONSAGRADOS for pressionado
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case CONSAGRADOS:
       if (record->event.pressed) {
-        // when keycode CONSAGRADOS is pressed
+        // Quando o botão CONSAGRADOS for pressionado
         SEND_STRING("Boa noite meus consagrados!");
       } else {
         // when keycode CONSAGRADOS is released
@@ -97,7 +97,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef OLED_DRIVER_ENABLE
 
-// Function that is called when something is received by HID
+// Função chamada quando uma mensagem é recebida por HID
 void raw_hid_receive(uint8_t *data, uint8_t length) {
     raw_hid_send(data, length);
     oled_clear();
@@ -106,15 +106,14 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     oled_render();
 }
 
-// Function called then the firmware inits the oled
-// I am adding a delay to wait for the display to start
-// This function is used to rotate the display
+// Função chamada na inicialização do OLED, adicionei uma espera aqui para aguardar
+// a inicialização do OLED e contornar um bug.
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     _delay_ms(2500);
     return rotation;
 }
 
-// Function where you can control the display, it is called at every firmware loop
+// Função de controle do display OLED, é chamada uma vez a cada loop do firmware
 void oled_task_user(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
