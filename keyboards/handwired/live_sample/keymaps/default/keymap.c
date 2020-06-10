@@ -31,7 +31,7 @@ enum livesample_keycodes {
   DEFAULT = SAFE_RANGE,
   LOWER, // Código para ativar a camada LOWER
   RAISE, // Código para ativar a camada RAISE
-  CONSAGRADOS // Código de uma macro pré definida
+  BTW // Código de uma macro pré definida
 };
 
 #define LOWER MO(_LOWER)  // Define a momentary layer keycode
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = {
   {    KC_A,        KC_MS_U,     KC_C      },
   {    KC_MS_L,     KC_MS_D,     KC_MS_R   },
-  {    CONSAGRADOS, KC_I,        KC_J      },
+  {    BTW,         KC_I,        KC_J      },
   {    _______,     KC_BSPACE,   _______   },
 },
 
@@ -79,15 +79,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Função utilizada para sobreescrever o comportamento de um botão existente ou definir um novo.
-// Estamos usando essa função para enviar uma mensagem quando o botão definido como CONSAGRADOS for pressionado
+// Estamos usando essa função para enviar uma mensagem quando o botão definido como BTW for pressionado
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case CONSAGRADOS:
+    case BTW:
       if (record->event.pressed) {
-        // Quando o botão CONSAGRADOS for pressionado
-        SEND_STRING("Boa noite meus consagrados!");
+        // Quando o botão BTW for pressionado
+        SEND_STRING("Eu uso Arch BTW...");
       } else {
-        // when keycode CONSAGRADOS is released
+        // when keycode BTW is released
       }
       break;
   }
